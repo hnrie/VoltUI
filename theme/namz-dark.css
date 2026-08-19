@@ -1,0 +1,96 @@
+/* Namz dark-blue shell override */
+:root {
+  color-scheme: dark;
+  --bg:#070B14 !important;
+  --bg-accent-1:rgba(37,99,235,.10) !important;
+  --bg-accent-2:rgba(14,165,233,.07) !important;
+  --bg-accent-3:rgba(59,130,246,.06) !important;
+  --bg-accent-4:rgba(96,165,250,.045) !important;
+  --panel:#0B1220 !important;
+  --panel-2:#0E1728 !important;
+  --panel-3:#14213A !important;
+  --panel-hover:#192A48 !important;
+  --panel-overlay:rgba(8,15,28,.97) !important;
+  --panel-contrast:#050914 !important;
+  --border:#1A2D4A !important;
+  --border-subtle:rgba(96,165,250,.10) !important;
+  --border-strong:#2B4B74 !important;
+  --border-accent:rgba(59,130,246,.48) !important;
+  --border-accent-subtle:rgba(59,130,246,.20) !important;
+  --text:#DCE8F8 !important;
+  --text-secondary:#9DB1CC !important;
+  --text-tertiary:#C8D8ED !important;
+  --text-muted:#667E9F !important;
+  --text-inverse:#fff !important;
+  --logo-primary:#F4F8FF !important;
+  --logo-secondary:#60A5FA !important;
+  --accent:#3B82F6 !important;
+  --accent-hover:#60A5FA !important;
+  --accent-soft:rgba(59,130,246,.16) !important;
+  --focus-ring:rgba(96,165,250,.42) !important;
+  --info:#38BDF8 !important;
+  --info-soft:rgba(56,189,248,.14) !important;
+  --scrollbar-thumb:rgba(96,165,250,.22) !important;
+  --scrollbar-thumb-hover:rgba(96,165,250,.40) !important;
+  --shadow-color:rgba(0,0,0,.62) !important;
+  --button-primary-bg:#3B82F6 !important;
+  --button-primary-bg-hover:#60A5FA !important;
+  --button-primary-bg-active:#2563EB !important;
+  --button-primary-border:#4C8DFF !important;
+  --button-primary-border-hover:#7DB3FF !important;
+  --button-primary-border-active:#2563EB !important;
+  --button-primary-text:#fff !important;
+  --button-secondary-bg:#101B2E !important;
+  --button-secondary-bg-hover:#172944 !important;
+  --button-secondary-bg-active:#1D3355 !important;
+  --button-secondary-border:#213A5E !important;
+  --button-secondary-border-hover:#315A8A !important;
+  --input-bg:#09111F !important;
+  --input-bg-hover:#0D1A2D !important;
+  --input-border:#1A3152 !important;
+  --input-border-hover:#2A4C78 !important;
+  --input-border-focus:#3B82F6 !important;
+  --select-bg:#09111F !important;
+  --select-bg-hover:#0D1A2D !important;
+  --select-border:#1A3152 !important;
+  --select-border-hover:#2A4C78 !important;
+  --select-border-open:#3B82F6 !important;
+  --sidebar-bg:#09111D !important;
+  --sidebar-border:rgba(96,165,250,.09) !important;
+  --titlebar-bg:rgba(7,13,24,.97) !important;
+  --titlebar-border:rgba(96,165,250,.10) !important;
+  --statusbar-bg:#08111F !important;
+  --statusbar-border:rgba(96,165,250,.10) !important;
+  --tab-strip-bg:#08101D !important;
+  --tab-active-bg:#101D31 !important;
+  --tab-inactive-bg:#0A1322 !important;
+  --tab-hover-bg:#14243B !important;
+  --tab-active-text:#E8F2FF !important;
+  --tab-inactive-text:#7F96B6 !important;
+  --tab-hover-text:#CDE1FA !important;
+  --tab-indicator-color:#3B82F6 !important;
+  --card-bg:#0E1728 !important;
+  --overlay-bg:rgba(8,15,28,.97) !important;
+  --overlay-border:#213A5E !important;
+  --list-row-bg-hover:rgba(59,130,246,.10) !important;
+  --list-row-bg-active:rgba(59,130,246,.16) !important;
+  --command-palette-item-selected-bg:rgba(59,130,246,.14) !important;
+  --command-palette-item-selected-border:#3B82F6 !important;
+  --checkbox-bg-checked:#2563EB !important;
+  --checkbox-border-checked:#60A5FA !important;
+  --toggle-bg-checked:#2563EB !important;
+  --toggle-bg-checked-hover:#3B82F6 !important;
+  --switch-bg-checked:#2563EB !important;
+  --switch-bg-checked-hover:#3B82F6 !important;
+  --range-fill-bg:#3B82F6 !important;
+  --range-thumb-bg:#93C5FD !important;
+  --range-thumb-border:#3B82F6 !important;
+}
+html,body,#root { background:#070B14; }
+body {
+  background-image:
+    radial-gradient(circle at 15% -10%, rgba(37,99,235,.13), transparent 34%),
+    radial-gradient(circle at 86% 8%, rgba(14,165,233,.08), transparent 30%),
+    linear-gradient(180deg,#070B14 0%,#060A12 100%);
+}
+::selection { background:rgba(59,130,246,.35); color:#F8FBFF; }
