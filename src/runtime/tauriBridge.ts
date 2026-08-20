@@ -107,15 +107,42 @@ function ensureEventStream(): void {
   };
 
   source.onerror = () => {
-    // EventSource reconnects on its own; drop the handle so a later listen()
-    // can rebuild the stream with the correct resume id if it fully closed.
-    if (source.readyState === EventSource.CLOSED) {
-      eventSource = null;
-      connectionListeners.forEach(fn => fn(false));
-    }
+    // Any error means the stream is not currently delivering events, so the UI
+    // is told immediately. Browsers park an unreachable stream in CONNECTING
+    // and retry forever rather than moving it to CLOSED, so keying this on
+    // CLOSED alone would leave the status bar claiming a live connection.
+    connectionListeners.forEach(fn => fn(false));
+
+    // The built-in retry handles a transient drop and will fire onopen again.
+    // A CLOSED stream is terminal and must be rebuilt here, because listeners
+    // are registered once at startup and nothing else would reopen it.
+    if (source.readyState !== EventSource.CLOSED) return;
+    source.close();
+    if (eventSource === source) eventSource = null;
+    scheduleReconnect();
   };
 
-  source.onopen = () => connectionListeners.forEach(fn => fn(true));
+  source.onopen = () => {
+    reconnectDelayMs = RECONNECT_MIN_MS;
+    connectionListeners.forEach(fn => fn(true));
+  };
+}
+
+const RECONNECT_MIN_MS = 1000;
+const RECONNECT_MAX_MS = 15_000;
+let reconnectDelayMs = RECONNECT_MIN_MS;
+let reconnectTimer: number | null = null;
+
+/** Rebuilds a terminally closed stream, backing off between attempts. */
+function scheduleReconnect(): void {
+  if (reconnectTimer !== null) return;
+  reconnectTimer = window.setTimeout(() => {
+    reconnectTimer = null;
+    // Resumes from lastServerEventId, so events emitted while the stream was
+    // down are replayed from the backend backlog rather than lost.
+    ensureEventStream();
+  }, reconnectDelayMs);
+  reconnectDelayMs = Math.min(reconnectDelayMs * 2, RECONNECT_MAX_MS);
 }
 
 const connectionListeners = new Set<(connected: boolean) => void>();
